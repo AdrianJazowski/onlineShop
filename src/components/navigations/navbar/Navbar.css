@@ -1,0 +1,42 @@
+/** @format */
+
+.navbar {
+  background: linear-gradient(90deg, rgb(56, 62, 66) 0%, rgb(26, 23, 23) 100%);
+  display: flex;
+  justify-content: flex-end;
+  font-size: 1.2rem;
+  position: sticky;
+}
+.navbar-links {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  grid-gap: 10px;
+  list-style: none;
+  width: 60vw;
+  justify-content: end;
+  margin-right: 2rem;
+}
+.navbar-links li {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.navbar-links li a {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  height: 100%;
+}
+.navbar-links li a:hover {
+  border-bottom: 4px solid #fff;
+  transition: all 0.2s ease-out;
+  background-color: gray;
+}
+/* shoppingBasketIcon{
+border-bottom: 4px solid #fff;
+transition: all 0.2s ease-out;
+background-color: gray;
+} */

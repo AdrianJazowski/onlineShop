@@ -1,0 +1,63 @@
+
+.cartList{
+    display: grid;
+
+}
+.oneItemInCart{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 5px;
+    align-content: center;
+    border: grey 1px dotted;
+    margin: 0 0 5px;
+   
+}
+.oneItemInCart button{
+    width: 25px;
+    height: 25px;
+}
+.oneItemInCart .btn-delete{
+    width: 75px;
+}
+.imgItemInCart{
+    grid-row: 1/3;
+    width: 50px;
+    height: 100px;
+    margin: 10px;
+    align-self: center;
+}
+.operation-wrapper,.productPrice,.btn-delete,.productName{
+    display: flex;
+    align-self: center;
+    justify-self: center;
+}
+.operation-wrapper button,.btn-delete{
+    display: block;
+    border-radius: 5px;
+    border: 1px solid #b6b6b6;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    background: #b6b6b6;
+}
+.btn-delete{
+    margin: 0 10px 0 0;
+}
+.productName{
+    grid-column: 2/5;
+    font-weight: 900;
+}
+.productQuantity{
+    width: 47px;
+    height: 30px;
+    text-align: center;
+    padding: 0 6px;
+    float: left;
+    border: 1px solid #d8d8d8;
+    line-height: 30px;
+}
+.productPrice{
+    font-weight: 900;
+    color: teal;
+}
