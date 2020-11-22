@@ -7,10 +7,10 @@ import "./ProductsList.css";
 
 const ProductsList = () => {
   const value = useContext(ShopContext);
-  const { products, addProductToCart, checkProductDuplicate } = value;
+  const { filteredProducts, addProductToCart, checkProductDuplicate } = value;
   return (
     <ul className="phone-list">
-      {products.map((product) => {
+      {filteredProducts.map((product) => {
         const {
           productName,
           productPrice,

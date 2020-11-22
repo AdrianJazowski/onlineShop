@@ -61,3 +61,21 @@
     font-weight: 900;
     color: teal;
 }
+.cartTotalWrapper{
+    position: relative;
+}
+.cartTotalWrapper p,
+.cartTotalWrapper button {
+    margin: 0 0 10px;
+    padding: 10px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 100%);
+    border: solid 1px red;
+}
+.cartTotalWrapper button{
+    background-color: yellowgreen;
+    transform: translate(-50%, 250%);
+    text-transform: uppercase;
+    cursor: pointer;
+}

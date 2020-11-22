@@ -10,6 +10,9 @@ const Navbar = () => {
   const value = useContext(ShopContext);
   return (
     <nav className="navbar">
+      <div className="brandName">
+        <Link to="/">Zakupos</Link>
+      </div>
       <ul className="navbar-links">
         <li>
           <Link to="/">Home</Link>
@@ -26,6 +29,7 @@ const Navbar = () => {
             onClick={value.handleCartOpen}
             style={{
               color: "#fff",
+              alignItems: "center",
               margin: "15px 15px 15px 15px",
             }}
           />

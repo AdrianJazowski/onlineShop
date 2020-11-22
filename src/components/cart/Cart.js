@@ -7,6 +7,7 @@ import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import ShopContext from "../../context";
 import "./Cart.css";
+import PaypalButton from "../paypal/PaypalButton";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -98,7 +99,15 @@ const Cart = () => {
                 );
               })}
             </ul>
-            {cartTotal === 0 ? null : <p>{cartTotal}</p>}
+            {cartTotal === 0 ? null : (
+              <div className="cartTotalWrapper">
+                <p>
+                  Wartość koszyka: <strong>{cartTotal}</strong>
+                </p>
+                <button className="btn-buy">Kup teraz</button>
+                <PaypalButton />
+              </div>
+            )}
           </div>
         </Fade>
       </Modal>

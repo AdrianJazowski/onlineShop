@@ -13,9 +13,30 @@ import SingleProduct from "../views/singleProduct/SingleProduct";
 
 const Root = () => {
   const [products, setProducts] = useState([...productsData]);
+  const [filteredProducts, setFilteredProducts] = useState([...productsData]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [cart, setCart] = useState([]);
   const [cartTotal, setCartTotal] = useState(0);
+  const [categorySelect, setCategorySelect] = useState("all");
+
+  const handleCategorySelect = (e) => {
+    setCategorySelect(e.target.value);
+  };
+
+  const filterProducts = () => {
+    let tempProducts = [...products];
+
+    if (categorySelect !== "all") {
+      tempProducts = tempProducts.filter((product) => {
+        return product.productCategory === categorySelect;
+      });
+    }
+    setFilteredProducts([...tempProducts]);
+  };
+
+  useEffect(() => {
+    filterProducts();
+  }, [categorySelect]);
 
   const handleCartOpen = () => {
     setIsCartOpen(true);
@@ -78,6 +99,10 @@ const Root = () => {
     setCartTotal(cartSum);
   };
 
+  const clearCart = () => {
+    setCart([]);
+  };
+
   useEffect(() => {
     calculateCartTotal();
   }, [cart]);
@@ -87,6 +112,7 @@ const Root = () => {
       <ShopContext.Provider
         value={{
           products,
+          filteredProducts,
           handleCartClose,
           handleCartOpen,
           isCartOpen,
@@ -98,6 +124,9 @@ const Root = () => {
           increaseProductInCart,
           cartTotal,
           calculateCartTotal,
+          clearCart,
+          categorySelect,
+          handleCategorySelect,
         }}
       >
         <Navbar />
