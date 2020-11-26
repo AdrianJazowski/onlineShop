@@ -31,7 +31,6 @@ const FilterByCategory = () => {
     "all",
     ...new Set(products.map((product) => product.productCategory)),
   ];
-  console.log(categories);
   return (
     <FormControl variant="outlined" className={classes.formControl}>
       <InputLabel id="categorySelect">Category</InputLabel>

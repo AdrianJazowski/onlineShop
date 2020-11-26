@@ -49,7 +49,7 @@ export const productsData = [
     productName: "Smartfon Huawei P40 Lite",
     productPrice: 949,
     productQuantity: 1,
-    productCategory: "Huawei ",
+    productCategory: "Huawei",
     productDescription:
       "Flagowy model HUAWEI P40 lite został zaprojektowany z myślą o kombinacji inteligentnego wyglądu, ogromnej wydajności i przeznaczony do tego, by dostarczać najwyższej klasy doznań. Wyjątkowy design, innowacyjny, poczwórny aparat główny wspierany sztuczną inteligencją, wytrzymała bateria, którą w 30 min można naładować do 70% dzięki SuperCharge 40W oraz 128 GB pamięci wewnętrznej to propozycja dla młodego pokolenia konsumentów, którzy lubią się bawić, fotografować i korzystać z mediów społecznościowych.",
     productImage: SmartfonHuaweiP40Lite,
@@ -60,7 +60,7 @@ export const productsData = [
     productName: "Smartfon Xiaomi Mi Note 10 Lite",
     productPrice: 1199,
     productQuantity: 1,
-    productCategory: "Xiaomi ",
+    productCategory: "Xiaomi",
     productDescription:
       "Niezależnie od tego, czy jesteś na spotkaniu, czy w podróży służbowej, bateria na której możesz polegać jest niezbędna. Mi Note 10 Lite wyposażony jest w akumulator 5260mAh, która zapewnia więcej niż wystarczającą moc, aby przetrwać przez ponad 2 dni na jednym ładowaniu. Smartfon obsługuje również technologię szybkiego ładowania 30W, która błyskawicznie naładuje akumulator.",
     productImage: SmartfonXiaomiMiNote10Lite,
@@ -71,7 +71,7 @@ export const productsData = [
     productName: "Smartfon Samsung Galaxy A40",
     productPrice: 1149,
     productQuantity: 1,
-    productCategory: "Samsung ",
+    productCategory: "Samsung",
     productDescription:
       "Smartfon Samsung Galaxy A40 wyposażony jest w procesor Exynos 7904 o taktowaniu 1,8 GHz. Producent zainstalował na pokładzie urządzenia 4 GB pamięci RAM. Te parametry przekładają się na szybkość działania nawet w wymagających grach i aplikacjach. W pamięci telefonu zgromadzisz nawet 64 GB danych. Gdyby ten zasób okazał się zbyt mały, można zainstalować kartę microSD do 512 GB. Bateria o pojemności 3100 mAh pozwoli spędzić długie godziny na pracy z urządzeniem.",
     productImage: SmartfonSamsungGalaxyA40from,
@@ -82,7 +82,7 @@ export const productsData = [
     productName: "Smartfon Samsung Galaxy A51",
     productPrice: 1599,
     productQuantity: 1,
-    productCategory: "Samsung ",
+    productCategory: "Samsung",
     productDescription:
       "Wygodne użytkowanie smartfona, obsługę urządzenia przy pomocy gestów i doskonały stopień zabezpieczenia urządzenia zagwarantuje system operacyjny Android 10. Ta odsłona systemu operacyjnego Android jest rekomendowana wymagającym użytkownikom, dla których telefon jest nietylko narzędziem do komunikacji i rozrywki, ale też do pracy. System Android 10 zapewni lepszą prywatność, dopracowany tryb skupienia i wiele innych przydatnych rozwiązań.",
     productImage: SmartfonSamsungGalaxyA51,
@@ -93,7 +93,7 @@ export const productsData = [
     productName: "Smartfon Apple iPhone 7 Plus 32 GB",
     productPrice: 2149,
     productQuantity: 1,
-    productCategory: "Apple ",
+    productCategory: "Apple",
     productDescription:
       "System iOS został zainstalowany na pokładzie urządzeń marki Apple. Oprogramowanie jest stale rozwijane i oferuje szeroki dostęp do wielu nowoczesnych aplikacji. Nawet nieco starsze modele iPhone’ów można zaktualizować i cieszyć się z najnowszych funkcji. Interfejs jest bardzo intuicyjny i prosty w obsłudze. Na rynku co jakiś czas pojawiają się nowe modele smartfonów z logo nadgryzionego jabłka. Obecnie oferta jest bogata i różnorodna. Flagowe należą do najtańszych, lecz w tym przypadku za ceną idzie wysoka jakość.",
     productImage: SmartfonAppleiPhone7Plus32GB,
@@ -104,7 +104,7 @@ export const productsData = [
     productName: "Smartfon Apple iPhone 11 64 GB",
     productPrice: 3199,
     productQuantity: 1,
-    productCategory: "Apple ",
+    productCategory: "Apple",
     productDescription:
       "Nowy system dwóch aparatów pozwala uchwycić więcej. Najszybszy czip w historii smartfonów i bateria na cały dzień – jeszcze więcej zdziałać. A dzięki wideo o jakości nieosiągalnej dla żadnego innego smartfona zapisane wspomnienia będą wyglądać piękniej niż kiedykolwiek.",
     productImage: SmartfonAppleiPhone1164GB,
@@ -115,7 +115,7 @@ export const productsData = [
     productName: "Smartfon Realme 6 128GB",
     productPrice: 1099,
     productQuantity: 1,
-    productCategory: "Apple ",
+    productCategory: "Apple",
     productDescription:
       "Bardzo wysoka częstotliwość odświeżania 90 Hz sprawia, że każda reakcja ekranu na dotknięcie jest niezwykle płynna. Dzięki wyświetlaczowi o przekątnej 16,5 cm (6,5 cala) oraz stosunkowi przekątnej ekranu do obudowy aż 90,5% świat rozrywki może pochłonąć użytkowników bez reszty.",
     productImage: SmartfonRealme6128GB,

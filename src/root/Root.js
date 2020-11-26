@@ -10,6 +10,9 @@ import ShopContext from "../context";
 import { productsData } from "../localData/productsData";
 import Cart from "../components/cart/Cart";
 import SingleProduct from "../views/singleProduct/SingleProduct";
+import Alert from "../components/alert/Alert";
+import { alertTypes } from "../components/alert/alertTypes";
+import { routes } from "../routes";
 
 const Root = () => {
   const [products, setProducts] = useState([...productsData]);
@@ -18,9 +21,48 @@ const Root = () => {
   const [cart, setCart] = useState([]);
   const [cartTotal, setCartTotal] = useState(0);
   const [categorySelect, setCategorySelect] = useState("all");
+  const [nameSelect, setNameSelect] = useState("");
+  const [priceSelect, setPriceSelect] = useState(10000);
+  const [maxProductPrice, setMaxProductPrice] = useState(0);
+  const [isAlertOpen, setIsAlertOpen] = useState(false);
+  const [alertType, setAlertType] = useState("");
+
+  const handleAlertOpen = () => {
+    setIsAlertOpen(true);
+  };
+
+  const handleAlertClose = () => {
+    setIsAlertOpen(false);
+  };
+
+  const closeAlertAfterTime = (time) => {
+    setTimeout(() => {
+      setIsAlertOpen(false);
+    }, time);
+  };
+
+  const getMaxProductPrice = () => {
+    const productsPrices = products.map((product) => {
+      return product.productPrice;
+    });
+    const maxPrice = Math.max(...productsPrices);
+    setMaxProductPrice(maxPrice);
+    console.log(maxPrice);
+  };
+
+  useEffect(() => {
+    getMaxProductPrice();
+  }, []);
 
   const handleCategorySelect = (e) => {
     setCategorySelect(e.target.value);
+  };
+  const handleNameSelect = (e) => {
+    setNameSelect(e.target.value);
+  };
+  const handlePriceSelect = (e) => {
+    setPriceSelect(e.target.ariaValueNow);
+    console.log(e.target.ariaValueNow);
   };
 
   const filterProducts = () => {
@@ -31,12 +73,26 @@ const Root = () => {
         return product.productCategory === categorySelect;
       });
     }
+
+    if (nameSelect !== "") {
+      tempProducts = tempProducts.filter((product) => {
+        return product.productName
+          .toLowerCase()
+          .includes(nameSelect.toLowerCase());
+      });
+    }
+    if (priceSelect !== null) {
+      tempProducts = tempProducts.filter((product) => {
+        return product.productPrice <= priceSelect;
+      });
+    }
+
     setFilteredProducts([...tempProducts]);
   };
 
   useEffect(() => {
     filterProducts();
-  }, [categorySelect]);
+  }, [categorySelect, nameSelect, priceSelect]);
 
   const handleCartOpen = () => {
     setIsCartOpen(true);
@@ -50,6 +106,10 @@ const Root = () => {
       return product.id === exampleProductId;
     });
     setCart([...new Set([...cart, choosenProduct])]);
+    handleAlertOpen();
+    setAlertType(alertTypes.add);
+
+    closeAlertAfterTime(3000);
   };
   const deleteProductFromCart = (exampleProductId) => {
     const filteredProducts = cart.filter((product) => {
@@ -59,6 +119,9 @@ const Root = () => {
       return product.id !== exampleProductId;
     });
     setCart(filteredProducts);
+    handleAlertOpen();
+    setAlertType(alertTypes.delete);
+    closeAlertAfterTime(3000);
   };
   const checkProductDuplicate = (exampleProduct, exampleProductId) => {
     if (cart.includes(exampleProduct)) {
@@ -127,15 +190,24 @@ const Root = () => {
           clearCart,
           categorySelect,
           handleCategorySelect,
+          handleNameSelect,
+          nameSelect,
+          handlePriceSelect,
+          maxProductPrice,
+          handleAlertOpen,
+          handleAlertClose,
+          isAlertOpen,
+          alertType,
         }}
       >
         <Navbar />
+        <Alert />
         <Cart />
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/products" component={Products} />
-          <Route path="/about" component={About} />
-          <Route path="/products/:name" component={SingleProduct} />
+          <Route exact path={routes.home} component={Home} />
+          <Route exact path={routes.products} component={Products} />
+          <Route path={routes.about} component={About} />
+          <Route path={routes.singleProduct} component={SingleProduct} />
         </Switch>
       </ShopContext.Provider>
     </BrowserRouter>
