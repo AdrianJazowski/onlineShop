@@ -15,10 +15,21 @@ import { alertTypes } from "../components/alert/alertTypes";
 import { routes } from "../routes";
 
 const Root = () => {
+  const getCartFromLocalStorage = () => {
+    let localStorageCart;
+
+    if (localStorage.getItem("cart")) {
+      localStorageCart = JSON.parse(localStorage.getItem("cart"));
+    } else {
+      localStorageCart = [];
+    }
+    return localStorageCart;
+  };
+
   const [products, setProducts] = useState([...productsData]);
   const [filteredProducts, setFilteredProducts] = useState([...productsData]);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(getCartFromLocalStorage());
   const [cartTotal, setCartTotal] = useState(0);
   const [categorySelect, setCategorySelect] = useState("all");
   const [nameSelect, setNameSelect] = useState("");
@@ -26,6 +37,14 @@ const Root = () => {
   const [maxProductPrice, setMaxProductPrice] = useState(0);
   const [isAlertOpen, setIsAlertOpen] = useState(false);
   const [alertType, setAlertType] = useState("");
+
+  const setCartToLocalStorage = () => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  };
+
+  useEffect(() => {
+    setCartToLocalStorage();
+  }, [cart]);
 
   const handleAlertOpen = () => {
     setIsAlertOpen(true);
