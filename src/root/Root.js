@@ -1,18 +1,18 @@
 /** @format */
 
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import About from "../views/about/About";
 import Home from "../views/home/Home";
 import Products from "../views/products/Products";
 import Navbar from "../components/navigations/navbar/Navbar";
 import ShopContext from "../context";
-import { productsData } from "../localData/productsData";
 import Cart from "../components/cart/Cart";
 import SingleProduct from "../views/singleProduct/SingleProduct";
 import Alert from "../components/alert/Alert";
 import { alertTypes } from "../components/alert/alertTypes";
 import { routes } from "../routes";
+import { client } from "../contentful";
 
 const Root = () => {
   const getCartFromLocalStorage = () => {
@@ -26,8 +26,8 @@ const Root = () => {
     return localStorageCart;
   };
 
-  const [products, setProducts] = useState([...productsData]);
-  const [filteredProducts, setFilteredProducts] = useState([...productsData]);
+  const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [cart, setCart] = useState(getCartFromLocalStorage());
   const [cartTotal, setCartTotal] = useState(0);
@@ -37,6 +37,47 @@ const Root = () => {
   const [maxProductPrice, setMaxProductPrice] = useState(0);
   const [isAlertOpen, setIsAlertOpen] = useState(false);
   const [alertType, setAlertType] = useState("");
+
+  const setContentfulData = (data) => {
+    if (data.length !== 0) {
+      const contentfulProducts = data.map((item) => {
+        const id = item.sys.id;
+
+        const productImage = item.fields.productImage.fields.file.url;
+
+        const product = {
+          id,
+          ...item.fields,
+        };
+
+        product.productImage = productImage;
+        return product;
+      });
+      setProducts(contentfulProducts);
+      setFilteredProducts(contentfulProducts);
+
+      const productsPrices = contentfulProducts.map((product) => {
+        return product.productPrice;
+      });
+      const maxPrice = Math.max(...productsPrices);
+      setMaxProductPrice(maxPrice);
+    }
+  };
+
+  const getContentfulData = () => {
+    client
+      .getEntries({
+        content_type: "product",
+      })
+      .then((res) => {
+        setContentfulData(res.items);
+      })
+      .catch((err) => console.error(err));
+  };
+
+  useEffect(() => {
+    getContentfulData();
+  }, []);
 
   const setCartToLocalStorage = () => {
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -60,18 +101,18 @@ const Root = () => {
     }, time);
   };
 
-  const getMaxProductPrice = () => {
-    const productsPrices = products.map((product) => {
-      return product.productPrice;
-    });
-    const maxPrice = Math.max(...productsPrices);
-    setMaxProductPrice(maxPrice);
-    console.log(maxPrice);
-  };
+  // const getMaxProductPrice = () => {
+  //   const productsPrices = products.map((product) => {
+  //     return product.productPrice;
+  //   });
+  //   const maxPrice = Math.max(...productsPrices);
+  //   setMaxProductPrice(maxPrice);
+  //   console.log(maxPrice);
+  // };
 
-  useEffect(() => {
-    getMaxProductPrice();
-  }, []);
+  // useEffect(() => {
+  //   getMaxProductPrice();
+  // }, []);
 
   const handleCategorySelect = (e) => {
     setCategorySelect(e.target.value);
@@ -81,7 +122,6 @@ const Root = () => {
   };
   const handlePriceSelect = (e) => {
     setPriceSelect(e.target.ariaValueNow);
-    console.log(e.target.ariaValueNow);
   };
 
   const filterProducts = () => {

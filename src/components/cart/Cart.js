@@ -6,8 +6,8 @@ import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import ShopContext from "../../context";
-import "./Cart.css";
 import PaypalButton from "../paypal/PaypalButton";
+import { CartDivWrapper } from "./CartStyles";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -58,56 +58,54 @@ const Cart = () => {
       >
         <Fade in={isCartOpen}>
           <div className={classes.paper}>
-            <h2 id="transition-modal-title">Your cart</h2>
-            <ul className="cartList">
-              {cart.map((product) => {
-                const {
-                  productImage,
-                  productName,
-                  productPrice,
-                  id,
-                  productQuantity,
-                } = product;
-                return (
-                  <li className="oneItemInCart" key={id}>
-                    <img
-                      className="imgItemInCart"
-                      src={productImage}
-                      alt={productName}
-                    />
-                    <p className="productName">{productName}</p>
-                    <div className="operation-wrapper">
+            <CartDivWrapper>
+              <h2 id="transition-modal-title">Your cart</h2>
+              <ul>
+                {cart.map((product) => {
+                  const {
+                    productImage,
+                    productName,
+                    productPrice,
+                    id,
+                    productQuantity,
+                  } = product;
+                  return (
+                    <li key={id}>
+                      <img src={productImage} alt={productName} />
+                      <p className="itemName">{productName}</p>
+                      <div className="operation-wrapper">
+                        <button
+                          onClick={() => decreaseProductInCart(id)}
+                          disabled={productQuantity === 1 ? true : false}
+                        >
+                          -
+                        </button>
+                        <p className="productQuantity">{productQuantity}</p>
+                        <button onClick={() => increaseProductInCart(id)}>
+                          +
+                        </button>
+                      </div>
+                      <p className="productPrice">{productPrice}$</p>
                       <button
-                        onClick={() => decreaseProductInCart(id)}
-                        disabled={productQuantity === 1 ? true : false}
+                        onClick={() => deleteProductFromCart(id)}
+                        className="btn-delete"
                       >
-                        -
+                        delete
                       </button>
-                      <p className="productQuantity">{productQuantity}</p>
-                      <button onClick={() => increaseProductInCart(id)}>
-                        +
-                      </button>
-                    </div>
-                    <p className="productPrice">{productPrice}$</p>
-                    <button
-                      onClick={() => deleteProductFromCart(id)}
-                      className="btn-delete"
-                    >
-                      delete
-                    </button>
-                  </li>
-                );
-              })}
-            </ul>
-            {cartTotal === 0 ? null : (
-              <div className="cartTotalWrapper">
-                <p>
-                  Wartość koszyka: <strong>{cartTotal}</strong>
-                </p>
-                <button className="btn-buy">Kup teraz</button>
-                <PaypalButton />
-              </div>
-            )}
+                    </li>
+                  );
+                })}
+              </ul>
+              {cartTotal === 0 ? null : (
+                <div className="cartTotalWrapper">
+                  <p>
+                    Wartość koszyka: <strong>{cartTotal}</strong>
+                  </p>
+                  <button className="btn-buy">Kup teraz</button>
+                  <PaypalButton />
+                </div>
+              )}
+            </CartDivWrapper>
           </div>
         </Fade>
       </Modal>

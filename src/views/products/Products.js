@@ -6,10 +6,10 @@ import ProductsList from "../../components/productsList/ProductsList";
 
 const Products = () => {
   return (
-    <>
+    <div style={{ backgroundColor: "RGBA(255,41,252,0.06)" }}>
       <FilterMenu />
       <ProductsList />
-    </>
+    </div>
   );
 };
 

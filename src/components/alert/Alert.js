@@ -2,7 +2,7 @@
 import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Alert as MaterialUiAlert } from "@material-ui/lab";
-import { IconButton, Collapse, Button } from "@material-ui/core";
+import { IconButton, Collapse } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 import ShopContext from "../../context";
 import { alertTypes } from "./alertTypes";

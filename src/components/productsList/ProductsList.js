@@ -3,7 +3,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import ShopContext from "../../context";
-import "./ProductsList.css";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -11,29 +10,36 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import { PhoneList, PhonePrice } from "./ProductListStyles";
 
 const useStyles = makeStyles({
   card: {
     width: "80%",
-    margin: "auto",
+    height: "500px",
+    margin: "10px auto",
+    border: "1px solid",
+  },
+  cardAction: {
+    height: "450px",
   },
   photo: {
-    height: "100%",
-    width: "130px",
+    height: "250px",
+    width: "auto",
     margin: "auto",
     padding: "10px",
   },
   cardContent: {
-    height: "15rem",
+    height: "200px",
     overflowY: "scroll",
   },
   link: {
     textDecoration: "none",
   },
   cardActions: {
+    height: "50px",
     justifyContent: "space-around",
+    zIndex: "1000",
   },
 });
 
@@ -42,7 +48,7 @@ const ProductsList = () => {
   const value = useContext(ShopContext);
   const { filteredProducts, addProductToCart, checkProductDuplicate } = value;
   return (
-    <ul className="phone-list">
+    <PhoneList className="phone-list">
       {filteredProducts.map((product) => {
         const {
           productName,
@@ -53,8 +59,8 @@ const ProductsList = () => {
         } = product;
 
         return (
-          <Card className={classes.card}>
-            <CardActionArea>
+          <Card className={classes.card} key={id}>
+            <CardActionArea className={classes.cardAction}>
               <Link
                 className={classes.link}
                 to={{
@@ -90,7 +96,9 @@ const ProductsList = () => {
               </Link>
             </CardActionArea>
             <CardActions className={classes.cardActions}>
-              <p className="phone-price">Price: {productPrice}</p>
+              <PhonePrice className="phone-price">
+                Price: {productPrice}
+              </PhonePrice>
               <button
                 className=""
                 onClick={() => {
@@ -102,36 +110,9 @@ const ProductsList = () => {
               </button>
             </CardActions>
           </Card>
-
-          /* <li className="phone-list-one-item" key={id}>
-            <Link
-              to={{
-                pathname: `/products/${productName.replace(/\s/g, "")}`,
-                state: {
-                  productName,
-                  productImage,
-                  productPrice,
-                  productDescription,
-                },
-              }}
-            >
-              <img className="phone-img" src={productImage} alt={productName} />
-            </Link>
-            <p className="phone-name"> {productName} </p>
-            <p className="phone-price">{productPrice}</p>
-            <button
-              className=""
-              onClick={() => {
-                checkProductDuplicate(product, id);
-                addProductToCart(id);
-              }}
-            >
-              Add to cart
-            </button>
-          </li> */
         );
       })}
-    </ul>
+    </PhoneList>
   );
 };
 
