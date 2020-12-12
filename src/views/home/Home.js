@@ -1,6 +1,5 @@
 /** @format */
 
-import { Height } from "@material-ui/icons";
 import React from "react";
 import Carusel from "../../components/carusel/Carusel";
 

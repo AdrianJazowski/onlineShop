@@ -1,7 +1,6 @@
 /** @format */
 
-import React, { useContext, useState } from "react";
-import Carousel from "react-elastic-carousel";
+import React from "react";
 import { Item, CarouselMY, Myh1 } from "./CaruselStyles";
 
 const Carusel = () => {

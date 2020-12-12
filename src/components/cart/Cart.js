@@ -8,6 +8,7 @@ import Fade from "@material-ui/core/Fade";
 import ShopContext from "../../context";
 import PaypalButton from "../paypal/PaypalButton";
 import { CartDivWrapper } from "./CartStyles";
+import CustomButton from "../atoms/Button";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -74,24 +75,29 @@ const Cart = () => {
                       <img src={productImage} alt={productName} />
                       <p className="itemName">{productName}</p>
                       <div className="operation-wrapper">
-                        <button
-                          onClick={() => decreaseProductInCart(id)}
+                        <CustomButton
+                          quantityButtonInCart
+                          onClickFn={() => decreaseProductInCart(id)}
                           disabled={productQuantity === 1 ? true : false}
                         >
                           -
-                        </button>
+                        </CustomButton>
                         <p className="productQuantity">{productQuantity}</p>
-                        <button onClick={() => increaseProductInCart(id)}>
+                        <CustomButton
+                          quantityButtonInCart
+                          onClickFn={() => increaseProductInCart(id)}
+                        >
                           +
-                        </button>
+                        </CustomButton>
                       </div>
                       <p className="productPrice">{productPrice}$</p>
-                      <button
-                        onClick={() => deleteProductFromCart(id)}
-                        className="btn-delete"
+                      <CustomButton
+                        deleteBtn
+                        quantityButtonInCart
+                        onClickFn={() => deleteProductFromCart(id)}
                       >
                         delete
-                      </button>
+                      </CustomButton>
                     </li>
                   );
                 })}
@@ -101,7 +107,7 @@ const Cart = () => {
                   <p>
                     Wartość koszyka: <strong>{cartTotal}</strong>
                   </p>
-                  <button className="btn-buy">Kup teraz</button>
+                  <CustomButton buyButtonInCart>Kup teraz</CustomButton>
                   <PaypalButton />
                 </div>
               )}

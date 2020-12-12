@@ -1,9 +1,14 @@
 /** @format */
 
 import React from "react";
+import ContactForm from "../../components/contactForm/ContactForm";
 
 const About = () => {
-  return <div>About</div>;
+  return (
+    <>
+      <ContactForm />
+    </>
+  );
 };
 
 export default About;

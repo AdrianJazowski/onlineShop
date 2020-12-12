@@ -1,7 +1,7 @@
 /** @format */
 
 import { FaBars } from "react-icons/fa";
-import { NavLink as Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Nav = styled.nav`
@@ -13,7 +13,7 @@ export const Nav = styled.nav`
   z-index: 10;
 `;
 
-export const NavLink = styled(Link)`
+export const StyledLink = styled(Link)`
   color: #fff;
   display: flex;
   align-items: center;
@@ -53,41 +53,30 @@ export const NavMenu = styled.div`
   }
 `;
 
-export const NavBtn = styled.nav`
+export const CartWrapper = styled.div`
   display: flex;
   align-items: center;
   margin-right: 24px;
 
-  @media screen and (max-width: 768px) {
+  @media (max-width: 768px) {
     display: none;
   }
 `;
 
-export const NavBtnLink = styled.button`
-  border-radius: 4px;
-  background: transparent;
-  padding: 5px px;
-  color: #fff;
-  outline: none;
-  border: none;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  text-decoration: none;
-  margin-left: 24px;
+// export const CartBtn = styled.button`
+//   border-radius: 4px;
+//   background: transparent;
+//   padding: 5px px;
+//   color: #fff;
+//   outline: none;
+//   border: none;
+//   cursor: pointer;
+//   transition: all 0.2s ease-in-out;
+//   text-decoration: none;
+//   margin-left: 24px;
 
-  &:hover {
-    transition: all 0.2s ease-in-out;
-    background: #15cdfc;
-    color: ;
-  }
-`;
-
-// padding: 5px 10px;
-// border-radius: 5px;
-// margin-top: 80%;
-// border: none;
-// outline: none;
-// cursor: pointer;
-// background-repeat: no-repeat;
-// background-position: 55% 10%;
-// background-size: 64%;
+//   &:hover {
+//     transition: all 0.2s ease-in-out;
+//     background: #15cdfc;
+//   }
+// `;

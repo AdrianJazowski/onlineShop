@@ -5,14 +5,12 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import About from "../views/about/About";
 import Home from "../views/home/Home";
 import Products from "../views/products/Products";
-import Navbar from "../components/navigations/navbar/Navbar";
 import ShopContext from "../context";
-import Cart from "../components/cart/Cart";
 import SingleProduct from "../views/singleProduct/SingleProduct";
-import Alert from "../components/alert/Alert";
 import { alertTypes } from "../components/alert/alertTypes";
 import { routes } from "../routes";
 import { client } from "../contentful";
+import MainTemplate from "../templates/MainTemplate";
 
 const Root = () => {
   const getCartFromLocalStorage = () => {
@@ -259,15 +257,14 @@ const Root = () => {
           alertType,
         }}
       >
-        <Navbar />
-        <Alert />
-        <Cart />
-        <Switch>
-          <Route exact path={routes.home} component={Home} />
-          <Route exact path={routes.products} component={Products} />
-          <Route path={routes.about} component={About} />
-          <Route path={routes.singleProduct} component={SingleProduct} />
-        </Switch>
+        <MainTemplate>
+          <Switch>
+            <Route exact path={routes.home} component={Home} />
+            <Route exact path={routes.products} component={Products} />
+            <Route path={routes.about} component={About} />
+            <Route path={routes.singleProduct} component={SingleProduct} />
+          </Switch>
+        </MainTemplate>
       </ShopContext.Provider>
     </BrowserRouter>
   );

@@ -12,6 +12,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import { PhoneList, PhonePrice } from "./ProductListStyles";
+import CustomButton from "../atoms/Button";
 
 const useStyles = makeStyles({
   card: {
@@ -99,15 +100,15 @@ const ProductsList = () => {
               <PhonePrice className="phone-price">
                 Price: {productPrice}
               </PhonePrice>
-              <button
-                className=""
-                onClick={() => {
+              <CustomButton
+                productListButton
+                onClickFn={() => {
                   checkProductDuplicate(product, id);
                   addProductToCart(id);
                 }}
               >
                 Add to cart
-              </button>
+              </CustomButton>
             </CardActions>
           </Card>
         );

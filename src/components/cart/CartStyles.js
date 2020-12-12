@@ -43,45 +43,23 @@ export const CartDivWrapper = styled.div`
           line-height: 30px;
         }
       }
-      button,
-      .btn-delete {
-        display: block;
-        width: 25px;
-        height: 25px;
-        border-radius: 5px;
-        border: 1px solid #b6b6b6;
-        width: 30px;
-        height: 30px;
-        text-align: center;
-        background: #b6b6b6;
-      }
       .productPrice {
         margin: auto;
         font-weight: 900;
         color: teal;
-      }
-      .btn-delete {
-        width: 75px;
-        margin: auto 10px auto 0;
       }
     }
   }
   .cartTotalWrapper {
     position: relative;
 
-    p,
-    .btn-buy {
+    p {
       margin: 0 0 10px;
       padding: 10px;
       position: absolute;
       left: 50%;
       transform: translate(-50%, 100%);
       border: solid 1px red;
-    }
-    .btn-buy {
-      background-color: yellowgreen;
-      transform: translate(-50%, 250%);
-      text-transform: uppercase;
     }
   }
 `;
