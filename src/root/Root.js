@@ -99,19 +99,6 @@ const Root = () => {
     }, time);
   };
 
-  // const getMaxProductPrice = () => {
-  //   const productsPrices = products.map((product) => {
-  //     return product.productPrice;
-  //   });
-  //   const maxPrice = Math.max(...productsPrices);
-  //   setMaxProductPrice(maxPrice);
-  //   console.log(maxPrice);
-  // };
-
-  // useEffect(() => {
-  //   getMaxProductPrice();
-  // }, []);
-
   const handleCategorySelect = (e) => {
     setCategorySelect(e.target.value);
   };

@@ -75,7 +75,8 @@ const StyledButton = styled.button`
     css`
       padding: 5px 15px;
       height: 40px;
-      background: #74f367;
+      ${"" /* background: #74f367; */}
+      background-color: ${({ theme }) => theme.colorsPalette.green};
       border-radius: 666px;
       &:hover {
         background: lime;

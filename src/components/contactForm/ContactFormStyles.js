@@ -23,15 +23,19 @@ export const StyledField = styled(Field)`
   background: transparent;
   border: 0px;
   border-bottom: 1px solid #c5ecfd;
+  outline: none;
   padding: 10px;
   color: #c5ecfd;
   width: 100%;
-  max-height: 400px;
   max-width: 100%;
   min-width: 100%;
-  /* ${({ texarea }) => css`
-    border: 2px solid #c5ecfd;
-  `} */
+  ${({ textarea }) =>
+    textarea &&
+    css`
+      border: 2px solid #c5ecfd;
+      resize: none;
+      height: 200px;
+    `}
 `;
 export const StyledH2 = styled.h2`
   color: #c5ecfd;

@@ -3,13 +3,14 @@
 import React from "react";
 import { Formik, ErrorMessage, Field } from "formik";
 import * as Yup from "yup";
+import emailjs from "emailjs-com";
+import CustomButton from "../atoms/Button";
 import {
   StyledField,
   StyledErrorMessageWrapper,
   StyledForm,
   StyledH2,
 } from "./ContactFormStyles";
-import CustomButton from "../atoms/Button";
 
 const contactFormSchema = Yup.object().shape({
   userName: Yup.string().required("enter your name!").min(3, "too short name"),
@@ -20,7 +21,27 @@ const contactFormSchema = Yup.object().shape({
   acceptTerms: Yup.bool().oneOf([true], "accept terms!"),
 });
 
-const ContactForm = ({ texarea }) => {
+const ContactForm = () => {
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        process.env.REACT_APP_EMAIL_SERVICE,
+        process.env.REACT_APP_EMAIL_TEMPLATE,
+        e.target,
+        process.env.REACT_APP_EMAIL_USER
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+  };
+
   return (
     <>
       <Formik
@@ -36,7 +57,7 @@ const ContactForm = ({ texarea }) => {
         }}
       >
         {({ values }) => (
-          <StyledForm>
+          <StyledForm onSubmit={sendEmail}>
             <StyledH2>Contact form</StyledH2>
             <StyledField
               id="userName"
@@ -44,6 +65,7 @@ const ContactForm = ({ texarea }) => {
               value={values.userName}
               type="text"
               placeholder="Type your name..."
+              autoComplete="off"
             />
             <StyledErrorMessageWrapper>
               <ErrorMessage name="userName" />
@@ -65,6 +87,7 @@ const ContactForm = ({ texarea }) => {
               name="message"
               placeholder="type your message..."
               component="textarea"
+              textarea
               value={values.message}
             />
             <StyledErrorMessageWrapper>
