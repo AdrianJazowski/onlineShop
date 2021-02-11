@@ -23,7 +23,7 @@ const Navbar = () => {
             Home
           </StyledLink>
           <StyledLink to={routes.products}>Products</StyledLink>
-          <StyledLink to={routes.about}>About</StyledLink>
+          <StyledLink to={routes.about}>Contact</StyledLink>
         </NavMenu>
         <CartWrapper>
           <CustomButton cartButtonInNav onClickFn={handleCartOpen}>

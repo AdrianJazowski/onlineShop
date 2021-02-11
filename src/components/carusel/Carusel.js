@@ -6,8 +6,6 @@ import { Item, CarouselMY, Myh1 } from "./CaruselStyles";
 const Carusel = () => {
   return (
     <>
-      <Myh1>Sprawdz nasze okazje</Myh1>
-
       <CarouselMY>
         <Item
           style={{
