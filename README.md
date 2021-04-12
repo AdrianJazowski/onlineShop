@@ -2,12 +2,12 @@
 
 # React eShop
 
-## Overview: https://eshoppage.netlify.app/
+## Overview: 
 
 A simple dynamic website created for portfolio usage. This project uses React.js, React-router-dom for navigation, Contentful CMS from dynamically updating the data and Css/Material Ui for layout styles.
 -Paypal
 
-### Live demo:
+### Live demo: https://eshoppage.netlify.app/
 
 ## Main Tech stack:
 
